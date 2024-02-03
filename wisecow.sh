@@ -14,13 +14,13 @@ get_api() {
 handleRequest() {
     # 1) Process the request
 	get_api
-	mod=`fortune`
+	mod=fortune
 
 cat <<EOF > $RSPFILE
 HTTP/1.1 200
 
 
-<pre>`cowsay $mod`</pre>
+<pre>cowsay $mod</pre>
 EOF
 }
 
@@ -38,7 +38,7 @@ main() {
 	echo "Wisdom served on port=$SRVPORT..."
 
 	while [ 1 ]; do
-		cat $RSPFILE | nc -lN $SRVPORT | handleRequest
+		cat $RSPFILE | nc -l --local-port=$SRVPORT | handleRequest
 		sleep 0.01
 	done
 }
