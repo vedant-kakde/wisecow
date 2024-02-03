@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wisecow-container
-          image: vedantkakde/wisecow-k8s:latest
+          image: vedantkakde/wisecow-app:latest
           ports:
             - containerPort: 4499
 
